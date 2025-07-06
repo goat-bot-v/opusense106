@@ -30,7 +30,7 @@ module.exports = {
             threadData.adminIDs.push({ id: logMessageData.TARGET_ID });
             if (module.exports.config.envConfig.sendNoti) {
               api.sendMessage(
-                `[ ${logMessageData.TARGET_NAME} ] দেখ এডমিন দিছি মাতাব্বরি করিস না কিন্তু😒`,
+                `[ ${logMessageData.TARGET_NAME} ] you are admin now `,
                 threadID
               );
             }
@@ -40,7 +40,7 @@ module.exports = {
             );
             if (module.exports.config.envConfig.sendNoti) {
               api.sendMessage(
-                `[ Breaking News ]\n\nDear - [ ${logMessageData.TARGET_NAME} ] গ্রুপ এডমিন থেকে লাথি মেরে বের করে দেওয়া হলো 😌😝`,
+                `[ Breaking News ]\n\nDear - [ ${logMessageData.TARGET_NAME} ] removed from admin`,
                 threadID
               );
             }
@@ -52,7 +52,7 @@ module.exports = {
           // Ensure nickname is updated correctly
           threadData.nicknames[logMessageData.participant_id] = logMessageData.nickname;
           api.sendMessage(
-            `এহহহ আবার Nickname ও লাগায় দেহা যায় 😼\n\n🆔 User ID : ${logMessageData.participant_id}\n New Nickname : ${logMessageData.nickname.length === 0 ? "original name" : logMessageData.nickname}`,
+            ` Nickname \n\n🆔 User ID : ${logMessageData.participant_id}\n New Nickname : ${logMessageData.nickname.length === 0 ? "original name" : logMessageData.nickname}`,
             threadID
           );
           break;
@@ -68,7 +68,7 @@ module.exports = {
           preIcon[threadID] = threadData.threadIcon;
           fs.writeFileSync(iconPath, JSON.stringify(preIcon));
           api.sendMessage(
-            `কোন ভালা মানুষের বাচ্চায় গ্রুপ ইমোজি টা চেঞ্জ করলো রে 😐\n\n ${preIcon[threadID] || ""}`,
+            `group imoji change \n\n ${preIcon[threadID] || ""}`,
             threadID
           );
           break;
@@ -86,7 +86,7 @@ module.exports = {
         case "log:thread-name": {
           threadData.threadName = logMessageData.name || "No name";
           api.sendMessage(
-            `কোন ভালা মানুষের বাচ্চায় জানি গ্রুপের নাম টা চেঞ্জ কইরা দিলো 🤦🏻‍♂️\n\nNew Group Name : ${threadData.threadName}`,
+            `group name is change \n\nNew Group Name : ${threadData.threadName}`,
             threadID
           );
           break;
@@ -96,7 +96,7 @@ module.exports = {
           // Handle reaction changes here
           const { TARGET_ID, REACTION } = logMessageData;
           api.sendMessage(
-            `রিয়েকশন পরিবর্তন হয়েছে 😑\n\nUser ID: ${TARGET_ID}\nReaction: ${REACTION}`,
+            `reaction is change\n\nUser ID: ${TARGET_ID}\nReaction: ${REACTION}`,
             threadID
           );
           break;
